@@ -15,7 +15,7 @@ app.post("/",async (req,res)=>{
     
     // console.log("----------------------------------");
     // console.log("----------------------------------");
-    // console.log(Object.keys(data));
+    
     // console.log("----------------------------------");
     // console.log("-----------repository-------------");
     // console.log(data.repository);
@@ -35,6 +35,7 @@ app.post("/",async (req,res)=>{
     // console.log("----------------------------------");
     // console.log("");
     // console.log("----------------------------------");
+    console.log(Object.keys(data));
     if(data.commits){
         console.log("commit");
     }
