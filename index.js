@@ -7,8 +7,8 @@ app.get('/', (req, res) =>{
 } )
 
 app.post("/",async (req,res)=>{
-    const response= await req;
-    res.json({response})
+    const response= await JSON.parse(req);
+    console.log(response);
     
     
 })
