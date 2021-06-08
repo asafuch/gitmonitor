@@ -13,29 +13,34 @@ app.post("/",async (req,res)=>{
     console.log("----------------------------------");
     const data=JSON.parse(JSON.stringify(req.body))
     
-    console.log("----------------------------------");
-    console.log("----------------------------------");
-    console.log(Object.keys(data));
-    console.log("----------------------------------");
-    console.log("-----------repository-------------");
-    console.log(data.repository);
-    console.log("-----------repository-------------");
-    console.log("----------------------------------");
-    console.log("");
-    console.log("----------------------------------");
-    console.log("-------------pusher---------------");
-    console.log(data.pusher);
-    console.log("-------------pusher---------------");
-    console.log("----------------------------------");
-    console.log("");
-    console.log("----------------------------------");
-    console.log("-------------commits--------------");
-    console.log(data.commits);
-    console.log("-------------commits--------------");
-    console.log("----------------------------------");
-    console.log("");
-    console.log("----------------------------------");
-    
+    // console.log("----------------------------------");
+    // console.log("----------------------------------");
+    // console.log(Object.keys(data));
+    // console.log("----------------------------------");
+    // console.log("-----------repository-------------");
+    // console.log(data.repository);
+    // console.log("-----------repository-------------");
+    // console.log("----------------------------------");
+    // console.log("");
+    // console.log("----------------------------------");
+    // console.log("-------------pusher---------------");
+    // console.log(data.pusher);
+    // console.log("-------------pusher---------------");
+    // console.log("----------------------------------");
+    // console.log("");
+    // console.log("----------------------------------");
+    // console.log("-------------commits--------------");
+    // console.log(data.commits);
+    // console.log("-------------commits--------------");
+    // console.log("----------------------------------");
+    // console.log("");
+    // console.log("----------------------------------");
+    if(data.commits){
+        console.log("commit");
+    }
+    else if(data.pull_request){
+        console.log("pull request");
+    }    
     res.json(req.body)
     console.log("----------------------------------");
     console.log("log ends");
