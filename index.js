@@ -7,7 +7,7 @@ app.get('/', (req, res) =>{
 } )
 
 app.post("/",(req,res)=>{
-    console.log(req.repository.full_name);
+    console.log(req);
     res.send("kys")
 })
 
