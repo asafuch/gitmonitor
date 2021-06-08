@@ -7,7 +7,7 @@ app.post("/",(req,res)=>{
     console.log("hello");
 })
 
-app.listen((process.env.PORT || 5000,async()=>{
+app.listen(process.env.PORT || 5000,async()=>{
     console.log("Server is up port");
 })
 
