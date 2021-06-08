@@ -7,7 +7,7 @@ app.get('/', (req, res) =>{
     res.send('Hello World! v2') 
     console.log("hello world");
 } )
-
+const obj={}
 app.post("/",async (req,res)=>{
     console.log("log start");
     console.log("----------------------------------");
@@ -37,7 +37,12 @@ app.post("/",async (req,res)=>{
     // console.log("----------------------------------");
     console.log(Object.keys(data));
     if(data.commits){
-        console.log("commit");
+        obj["owner"]=data.repository.owner
+        obj["url"]=data.repository.html_url
+        obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
+        obj["pusher"]=data.pusher
+        obj["commit"]=data.commits
+        console.log(obj);
     }
     else if(data.pull_request){
         console.log("pull request");
