@@ -51,7 +51,7 @@ app.post("/",async (req,res)=>{
         obj["number"]=data.number
         obj["pull"]={url:data.pull_request.url , title:data.pull_request.title,user:{name:data.pull_request.user,url:data.pull_request.user.html_url}}
 
-        obj["sender"]={sender:{name:data.sender.name,url:data.sender.html_url,type:data.sender.type}}
+        obj["sender"]={name:data.sender.name,url:data.sender.html_url,type:data.sender.type}
         console.log(obj);
     }    
     res.json(obj)
