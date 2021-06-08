@@ -1,7 +1,7 @@
 const express=require("express")
-const bodyParser=require("body-parser")
 const app=express()
 
+//this files will run on heruko, dont try to run it.
 app.use(express.json());
 app.get('/', (req, res) =>{
     res.send('Hello World! v2') 
@@ -49,8 +49,9 @@ app.post("/",async (req,res)=>{
         obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
         obj["action"]=data.action
         obj["number"]=data.number
-        obj["pull"]=data.pull_request
-        obj["sender"]=data.sender
+        obj["pull"]={url:data.pull_request.url , title:data.pull_request.title,user:{name:data.pull_request.user,url:data.pull_request.user.html_url}}
+
+        obj["sender"]={sender:{name:data.sender.name,url:data.sender.html_url,type:data.sender.type}}
         console.log(obj);
     }    
     res.json(obj)
