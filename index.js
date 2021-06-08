@@ -12,7 +12,12 @@ app.post("/",async (req,res)=>{
     console.log("log start");
     console.log("----------------------------------");
     const data=req.body
-    console.log(JSON.parse(JSON.stringify(data)));
+    console.log(JSON.parse(JSON.stringify(data[0].commits)));
+    console.log("----------------------------------");
+    console.log("----------------------------------");
+    console.log("----------------------------------");
+    console.log("----------------------------------");
+    console.log(JSON.parse(JSON.stringify(data.pusher)));
     res.json(req.body)
     console.log("----------------------------------");
     console.log("log ends");
