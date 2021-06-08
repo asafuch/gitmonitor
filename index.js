@@ -2,6 +2,8 @@ const express=require("express")
 const app=express()
 
 //this files will run on heruko, dont try to run it.
+//changing the content of any file in https://github.com/asafuch/demo will initialized the changes
+//
 app.use(express.json());
 app.get('/', (req, res) =>{
     res.send('Hello World! v2') 
@@ -12,29 +14,6 @@ app.post("/",async (req,res)=>{
     console.log("log start");
     console.log("----------------------------------");
     const data=JSON.parse(JSON.stringify(req.body))
-    
-    // console.log("----------------------------------");
-    // console.log("----------------------------------");
-    
-    // console.log("----------------------------------");
-    // console.log("-----------repository-------------");
-    // console.log(data.repository);
-    // console.log("-----------repository-------------");
-    // console.log("----------------------------------");
-    // console.log("");
-    // console.log("----------------------------------");
-    // console.log("-------------pusher---------------");
-    // console.log(data.pusher);
-    // console.log("-------------pusher---------------");
-    // console.log("----------------------------------");
-    // console.log("");
-    // console.log("----------------------------------");
-    // console.log("-------------commits--------------");
-    // console.log(data.commits);
-    // console.log("-------------commits--------------");
-    // console.log("----------------------------------");
-    // console.log("");
-    // console.log("----------------------------------");
     console.log(Object.keys(data));
     if(data.commits){
         let obj={}
@@ -50,7 +29,7 @@ app.post("/",async (req,res)=>{
         obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
         obj["action"]=data.action
         obj["number"]=data.number
-        obj["pull"]={url:data.pull_request.url , title:data.pull_request.title,user:{name:data.pull_request.user,url:data.pull_request.user.html_url}}
+        obj["pull"]={url:data.pull_request.url , title:data.pull_request.title,user:{name:data.pull_request.user.name,url:data.pull_request.user.html_url}}
 
         obj["sender"]={name:data.sender.name,url:data.sender.html_url,type:data.sender.type}
         console.log(obj);
