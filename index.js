@@ -1,7 +1,10 @@
 const express=require("express")
 const app=express()
 
-app.get('/', (req, res) => res.send('Hello World! v2') );
+app.get('/', (req, res) =>{
+    res.send('Hello World! v2') 
+    console.log("hello world");
+} )
 
 app.post("/",(req,res)=>{
     console.log("hello");
