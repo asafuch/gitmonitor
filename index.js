@@ -37,17 +37,23 @@ app.post("/",async (req,res)=>{
     // console.log("----------------------------------");
     console.log(Object.keys(data));
     if(data.commits){
-        obj["owner"]=data.repository.owner
+        
         obj["url"]=data.repository.html_url
         obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
         obj["pusher"]=data.pusher
-        obj["commit"]=data.commits
+        obj["commit"]={time:data.commits.timestamp , url:data.commits.url , message: data.commits.message}
         console.log(obj);
     }
     else if(data.pull_request){
-        console.log("pull request");
+        obj["url"]=data.repository.html_url
+        obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
+        obj["action"]=data.action
+        obj["number"]=data.number
+        obj["pull"]=data.pull_request
+        obj["sender"]=data.sender
+        console.log(obj);
     }    
-    res.json(req.body)
+    res.json(obj)
     console.log("----------------------------------");
     console.log("log ends");
     
