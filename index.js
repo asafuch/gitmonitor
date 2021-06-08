@@ -15,8 +15,23 @@ app.post("/",async (req,res)=>{
     
     console.log("----------------------------------");
     console.log("----------------------------------");
-    console.log("-----------repository-------------");
     console.log(Object.keys(data));
+    console.log("-----------repository-------------");
+    console.log(data.repository);
+    console.log("-----------repository-------------");
+    console.log("-------------pusher---------------");
+    console.log(data.pusher);
+    console.log("-------------pusher---------------");
+    console.log("-------------commits--------------");
+    console.log(data.commits);
+    console.log("-------------commits--------------");
+
+    console.log("-------------created--------------");
+    console.log(data.created);
+    console.log("-------------created--------------");
+    console.log("-------------deleted--------------");
+    console.log(data.deleted);
+    console.log("-------------deleted--------------");
     console.log("----------------------------------");
     console.log("----------------------------------");
     
