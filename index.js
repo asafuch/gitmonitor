@@ -11,7 +11,7 @@ app.get('/', (req, res) =>{
 app.post("/",async (req,res)=>{
     console.log("log start");
     console.log("----------------------------------");
-    const data=req.body
+    const data=req.body.repository
     console.log(JSON.parse(JSON.stringify(data[0].commits)));
     console.log("----------------------------------");
     console.log("----------------------------------");
