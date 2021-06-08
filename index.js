@@ -7,7 +7,7 @@ app.get('/', (req, res) =>{
 } )
 
 app.post("/",async (req,res)=>{
-    const response= await req.payload;
+    const response= await req;
     console.log(response);
     res.send("kys")
 })
