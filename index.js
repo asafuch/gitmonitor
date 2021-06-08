@@ -7,7 +7,7 @@ app.get('/', (req, res) =>{
     res.send('Hello World! v2') 
     console.log("hello world");
 } )
-const obj={}
+
 app.post("/",async (req,res)=>{
     console.log("log start");
     console.log("----------------------------------");
@@ -37,14 +37,15 @@ app.post("/",async (req,res)=>{
     // console.log("----------------------------------");
     console.log(Object.keys(data));
     if(data.commits){
-        
+        let obj={}
         obj["url"]=data.repository.html_url
         obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
         obj["pusher"]=data.pusher
-        obj["commit"]={time:data.commits.timestamp , url:data.commits.url , message: data.commits.message}
+        obj["commit"]={time:data.commits[0].timestamp , url:data.commits[0].url , message: data.commits[0].message}
         console.log(obj);
     }
     else if(data.pull_request){
+        let obj={}
         obj["url"]=data.repository.html_url
         obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
         obj["action"]=data.action
@@ -54,7 +55,7 @@ app.post("/",async (req,res)=>{
         obj["sender"]={name:data.sender.name,url:data.sender.html_url,type:data.sender.type}
         console.log(obj);
     }    
-    res.json(obj)
+    res.json("obj")
     console.log("----------------------------------");
     console.log("log ends");
     
