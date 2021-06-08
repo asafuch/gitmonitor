@@ -7,8 +7,11 @@ app.get('/', (req, res) =>{
 } )
 
 app.post("/",async (req,res)=>{
-    const response= await JSON.parse(req);
-    console.log(response);
+    console.log("log start");
+    console.log("----------------------------------");
+    console.log(req);
+    console.log("----------------------------------");
+    console.log("log ends");
     
     
 })
