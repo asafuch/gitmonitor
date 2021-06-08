@@ -6,8 +6,9 @@ app.get('/', (req, res) =>{
     console.log("hello world");
 } )
 
-app.post("/",(req,res)=>{
-    console.log(req.payload);
+app.post("/",async (req,res)=>{
+    const response= await req.payload;
+    console.log(response);
     res.send("kys")
 })
 
