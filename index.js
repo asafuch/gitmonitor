@@ -11,7 +11,8 @@ app.get('/', (req, res) =>{
 app.post("/",async (req,res)=>{
     console.log("log start");
     console.log("----------------------------------");
-    console.log(JSON.parse(JSON.stringify(req.body.repository)));
+    const data=req.body
+    console.log(JSON.parse(JSON.stringify(data)));
     res.json(req.body)
     console.log("----------------------------------");
     console.log("log ends");
