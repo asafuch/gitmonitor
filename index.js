@@ -8,8 +8,8 @@ app.get('/', (req, res) =>{
 
 app.post("/",async (req,res)=>{
     const response= await req;
-    const data=JSON.parse(response)
-    console.log(data);
+    res.json({response})
+    
     res.send("kys")
 })
 
