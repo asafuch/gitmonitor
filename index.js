@@ -10,7 +10,7 @@ app.post("/",async (req,res)=>{
     const response= await req;
     res.json({response})
     
-    res.send("kys")
+    
 })
 
 app.listen(process.env.PORT || 5000,async()=>{
