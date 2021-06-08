@@ -7,7 +7,7 @@ app.get('/', (req, res) =>{
 } )
 
 app.post("/",(req,res)=>{
-    console.log("hello");
+    console.log("hello",req);
     res.send("kys")
 })
 
