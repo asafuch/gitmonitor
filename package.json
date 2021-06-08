@@ -1,0 +1,25 @@
+{
+  "name": "gitmonitor",
+  "version": "1.0.0",
+  "description": "גדשגדש",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asafuch/gitmonitor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asafuch/gitmonitor/issues"
+  },
+  "homepage": "https://github.com/asafuch/gitmonitor#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "localtunnel": "^2.0.1",
+    "ngrok": "^4.0.1",
+    "nodemon": "^2.0.7"
+  }
+}
