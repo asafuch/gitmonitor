@@ -7,7 +7,8 @@ app.get('/', (req, res) =>{
 } )
 
 app.post("/",(req,res)=>{
-    console.log("hello",req);
+    const string=`new commit was made by ${req.repository.owner.name} id of ${req.repository.owner.id} to the repository ${req.repository.name} ${req.repository.id}`
+    console.log(string);
     res.send("kys")
 })
 
