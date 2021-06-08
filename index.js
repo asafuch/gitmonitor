@@ -11,7 +11,7 @@ app.get('/', (req, res) =>{
 app.post("/",async (req,res)=>{
     console.log("log start");
     console.log("----------------------------------");
-    console.log(req);
+    console.log(req.repository);
     console.log("----------------------------------");
     console.log("log ends");
     
