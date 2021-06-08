@@ -12,7 +12,7 @@ app.post("/",async (req,res)=>{
     console.log("log start");
     console.log("----------------------------------");
     console.log(req.body);
-    res.send(req.body)
+    res.json(req.body)
     console.log("----------------------------------");
     console.log("log ends");
     
