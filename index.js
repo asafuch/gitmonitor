@@ -8,6 +8,7 @@ app.get('/', (req, res) =>{
 
 app.post("/",(req,res)=>{
     console.log("hello");
+    res.send("kys")
 })
 
 app.listen(process.env.PORT || 5000,async()=>{
