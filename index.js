@@ -11,12 +11,12 @@ app.get('/', (req, res) =>{
 app.post("/",async (req,res)=>{
     console.log("log start");
     console.log("----------------------------------");
-    const data=req.body.repository
+    const data=JSON.parse(JSON.stringify(req.body))
     
     console.log("----------------------------------");
     console.log("----------------------------------");
     console.log("-----------repository-------------");
-    console.log(JSON.parse(JSON.stringify(data)));
+    console.log(Object.keys(data));
     console.log("----------------------------------");
     console.log("----------------------------------");
     
