@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import cors from "cors"
  class Commit extends Component {
      static defaultProps={
          url:'https://github.com/asafuch/demo',
@@ -13,7 +13,14 @@ import React, { Component } from 'react'
      }
     async componentDidMount(){
         try{
-            let response = await fetch('https://githubmonitors.herokuapp.com/type/commit');
+            let response = await fetch('https://githubmonitors.herokuapp.com/type/commit',{
+                method: "GET",
+                mode:"cors",
+                headers: {
+                    "Content-Type":"application/json",
+                    "Accept": "application/vnd.heroku+json; version=3"
+                }
+            });
             let data = await response.json();
             console.log(data);
         }
