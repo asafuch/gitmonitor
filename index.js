@@ -39,6 +39,9 @@ app.post("/",async (req,res)=>{
         
       
         console.log(obj);
+        DB.insertHook('pull', obj)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     
 
     }    
