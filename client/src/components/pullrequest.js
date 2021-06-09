@@ -2,19 +2,20 @@ import React, { Component } from 'react'
 
  class PullRequest extends Component {
     static defaultProps={
-        url: 'https://github.com/asafuch/demo',
-        time: { updated: '2021-06-08T18:41:13Z', pushed: '2021-06-09T12:05:14Z' },
+        url: 'https://github.com/asafuch/demo/pull/12',
+        time: { updated: '2021-06-08T18:41:13Z', pushed: '2021-06-09T12:45:46Z' },
         action: 'opened',
-        number: 6,
+        number: 12,
         pull: {
-            url: 'https://api.github.com/repos/asafuch/demo/pulls/6',
-            title: 'new pull',
-            user: { name: undefined, url: 'https://github.com/asafuch' }
+            url: 'https://github.com/asafuch/demo/pull/12',
+            title: 'Asafuch patch 1',
+            user: { name: 'asafuch', url: 'https://github.com/asafuch' }
         },
         sender: { name: undefined, url: 'https://github.com/asafuch', type: 'User' }
     }
     render() {
         const {url,time,action,number,pull,sender}=this.props
+ 
         return (
             <div>
                 <div class="card text-center">
@@ -23,7 +24,7 @@ import React, { Component } from 'react'
                     </div>
                         <div class="card-body">
                             <h5 class="card-title">Title: {pull.title}</h5>
-                            <p class="card-text">{action==="opened" ? `New pull request has been added by ${pull.user.url}, check it out`:"a Pull request has been closed,check out why"}</p>
+                            <p class="card-text">{action==="opened" ? `New pull request has been added by ${pull.user.name}  check it out`:"a Pull request has been closed,check out why"}</p>
                             <a href={pull.url} target="_blank" class="btn btn-primary">Click here</a>
                         </div>
                         <div class="card-footer text-muted">
