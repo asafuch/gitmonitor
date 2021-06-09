@@ -1,16 +1,26 @@
 const express=require("express")
 const DB = require('./modules/db.js')
+const cors = require('cors')
 const app=express()
 
 //this file will run on heruko, dont try to run it.
 //only run the client (react)
 //changing the content of any file in https://github.com/asafuch/demo will initialized the changes
-//
+app.use(cors())
 app.use(express.json());
-app.get('/', (req, res) =>{
-    res.send('Hello World! v2') 
-    console.log("hello world");
-} )
+
+
+app.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin', 'https://githubmonitors.herokuapp.com');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next()
+})
+// app.get('/', (req, res) =>{
+//     res.send('Hello World! v2') 
+//     console.log("hello world");
+// } )
 
 app.post("/",async (req,res)=>{
     console.log(req.headers);

@@ -11,26 +11,19 @@ import React, { Component } from 'react'
             message: 'Update demo.txt'
          }
      }
-    async componentDidMount(){
-        try{
-            let response = await fetch('https://githubmonitors.herokuapp.com/type/commit',{
-                method: "GET",
-                mode:"cors",
-                headers: {
-                    "Content-Type":"application/json",
-                    "Accept": "application/vnd.heroku+json; version=3"
-                }
-            });
-            let data = await response.json();
-            console.log(data);
-        }
-        catch(err) {
-            console.log(err);
-        }
-        
-        // .then(res => res.json())
-        // .then(data => console.log(data))
-        // .catch(err => console.log(err))
+     componentDidMount(){
+        // try{
+        //     let response = await 
+        //     let data = await response.json();
+        //     console.log(data);
+        // }
+        // catch(err) {
+        //     console.log(err);
+        // }
+        fetch('https://githubmonitors.herokuapp.com/type/commit')
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
 
         
     }
