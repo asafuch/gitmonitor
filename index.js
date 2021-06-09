@@ -10,16 +10,16 @@ app.use(cors())
 app.use(express.json());
 
 
-app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin', 'https://githubmonitors.herokuapp.com');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next()
-})
+// app.use((req,res,next)=>{
+//     res.setHeader('Access-Control-Allow-Origin', 'https://githubmonitors.herokuapp.com');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//     res.setHeader('Access-Control-Allow-Credentials', true);
+//     next()
+// })
 // app.get('/', (req, res) =>{
 //     res.send('Hello World! v2') 
-//     console.log("hello world");
+//     console.log("hello world"); 
 // } )
 
 app.post("/",async (req,res)=>{
@@ -68,10 +68,11 @@ app.get('/name',(req,res)=>{
     res.send('hello')
 })
 app.post('/commit',(req,res)=>{
-    res.send({message:'ok'})
-    DB.getRequests('commit')   
-    .then(data => res.send(data))
-    .catch(err => res.send({message:err}))
+    res.send({message:'okxcbvcb'})
+
+    // DB.getRequests('commit')   
+    // .then(data => res.send(data))
+    // .catch(err => res.send({message:err}))
 })
 
 app.listen(process.env.PORT || 5000,async()=>{
