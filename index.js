@@ -1,4 +1,5 @@
 const express=require("express")
+const DB = require('./modules/db.js')
 const app=express()
 
 //this file will run on heruko, dont try to run it.
@@ -23,6 +24,9 @@ app.post("/",async (req,res)=>{
         obj["pusher"]=data.pusher
         obj["commit"]={time:data.commits[0].timestamp , url:data.commits[0].url , message: data.commits[0].message}
         console.log(obj);
+        DB.insertHook('commit', obj)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     }
     else if(data.pull_request){
         let obj={}
