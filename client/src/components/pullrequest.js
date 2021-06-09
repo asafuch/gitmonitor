@@ -28,7 +28,7 @@ import React, { Component } from 'react'
                             <a href={pull.url} target="_blank" class="btn btn-primary">Click here</a>
                         </div>
                         <div class="card-footer text-muted">
-                            2 days ago
+                           {`updated at: ${time.updated}, pushed at: ${time.pushed}`}
                         </div>
                     </div>
             </div>

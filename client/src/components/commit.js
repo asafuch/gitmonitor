@@ -12,11 +12,23 @@ import React, { Component } from 'react'
          }
      }
     render() {
-        console.log(this.props);
+        const {url,time,pusher,commit}=this.props
         return (
             <div>
-                <h1>Commit!</h1>
-            </div>
+            <div class="card text-center">
+                <div style= {{background:"#28a745"}} class="card-header">
+                   New Commit
+                </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Message: {commit.message}</h5>
+                        <p class="card-text">{`a New Commit has been made by ${pusher.name} at ${commit.time}`}</p>
+                        <a href={commit.url} target="_blank" class="btn btn-primary">Click here</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        {`at: ${commit.time}`}
+                    </div>
+                </div>
+        </div>
         )
     }
 }
