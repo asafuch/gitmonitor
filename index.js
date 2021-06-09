@@ -14,7 +14,7 @@ app.post("/",async (req,res)=>{
     console.log("log start");
     console.log("----------------------------------");
     const data=JSON.parse(JSON.stringify(req.body))
-    console.log(Object.keys(data));
+
     if(data.commits){
         let obj={}
         obj["url"]=data.repository.html_url
