@@ -1,7 +1,8 @@
 const express=require("express")
 const app=express()
 
-//this files will run on heruko, dont try to run it.
+//this file will run on heruko, dont try to run it.
+//only run the client (react)
 //changing the content of any file in https://github.com/asafuch/demo will initialized the changes
 //
 app.use(express.json());
@@ -31,7 +32,7 @@ app.post("/",async (req,res)=>{
         obj["number"]=data.number
         obj["pull"]={url:data.pull_request.html_url , title:data.pull_request.title,user:{name:data.pull_request.user.login,url:data.pull_request.user.html_url}}
 
-        obj["sender"]={name:data.sender.name,url:data.sender.html_url,type:data.sender.type}
+        
       
         console.log(obj);
     
