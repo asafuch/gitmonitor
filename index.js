@@ -68,11 +68,11 @@ app.get('/name',(req,res)=>{
     res.send('hello')
 })
 app.post('/commit',(req,res)=>{
-    res.send({message:'okxcbvcb'})
+    // res.send({message:'okxcbvcb'})
 
-    // DB.getRequests('commit')   
-    // .then(data => res.send(data))
-    // .catch(err => res.send({message:err}))
+    DB.getRequests('commit')   
+    .then(data => res.send(data))
+    .catch(err => res.send({message:err}))
 })
 
 app.listen(process.env.PORT || 5000,async()=>{
