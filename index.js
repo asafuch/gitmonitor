@@ -54,6 +54,9 @@ app.post("/",async (req,res)=>{
     
 })
 
+app.get('/name',(req,res)=>{
+    res.send('hello')
+})
 app.get('/type/:type',(req,res)=>{
     DB.getRequests(req.paramas.type)   
     .then(data => res.send(data))
