@@ -11,6 +11,13 @@ import React, { Component } from 'react'
             message: 'Update demo.txt'
          }
      }
+    componentDidMount(){
+        fetch('https://githubmonitors.herokuapp.com/type/commit')
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+
+        
+    }
     render() {
         const {url,time,pusher,commit}=this.props
         return (
