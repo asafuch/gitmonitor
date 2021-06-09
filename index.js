@@ -29,14 +29,12 @@ app.post("/",async (req,res)=>{
         obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
         obj["action"]=data.action
         obj["number"]=data.number
-        obj["pull"]={url:data.pull_request.url , title:data.pull_request.title,user:{name:data.pull_request.user.name,url:data.pull_request.user.html_url}}
+        obj["pull"]={url:data.pull_request.html_url , title:data.pull_request.title,user:data.pull_request.user}
 
         obj["sender"]={name:data.sender.name,url:data.sender.html_url,type:data.sender.type}
-        console.log(Object.keys(data.pull_request));
-        console.log(data.pull_request._links.html.href);
-        console.log(data.pull_request.html_url);
-        console.log(data.pull_request.user);
-        console.log(data.pull_request.base);
+      
+        console.log(obj);
+    
 
     }    
     res.json("obj")
