@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import cors from "cors"
+
  class Commit extends Component {
      static defaultProps={
          url:'https://github.com/asafuch/demo',
