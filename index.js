@@ -14,7 +14,7 @@ app.get('/', (req, res) =>{
 
 app.post("/",async (req,res)=>{
     console.log(req.headers);
-    if(req.headers.user-agent==='GitHub-Hookshot/f923b7b'){
+    if(req.headers['user-agent']==='GitHub-Hookshot/f923b7b'){
         const data=JSON.parse(JSON.stringify(req.body))
 
         if(data.commits){
