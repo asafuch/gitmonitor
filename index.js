@@ -14,43 +14,37 @@ app.get('/', (req, res) =>{
 
 app.post("/",async (req,res)=>{
     console.log(req.headers);
-    console.log(req.url);
-    console.log("log start");
-    console.log("----------------------------------");
-    const data=JSON.parse(JSON.stringify(req.body))
+    if(req.headers.user-agent==='GitHub-Hookshot/f923b7b'){
+        const data=JSON.parse(JSON.stringify(req.body))
 
-    if(data.commits){
-        let obj={}
-        obj["url"]=data.repository.html_url
-        obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
-        obj["pusher"]=data.pusher
-        obj["commit"]={time:data.commits[0].timestamp , url:data.commits[0].url , message: data.commits[0].message}
-        console.log(obj);
-        if(obj.commit.url.length >0){
+        if(data.commits){
+            let obj={}
+            obj["url"]=data.repository.html_url
+            obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
+            obj["pusher"]=data.pusher
+            obj["commit"]={time:data.commits[0].timestamp , url:data.commits[0].url , message: data.commits[0].message}
+            console.log(obj);
+            
             DB.insertHook('commit', obj)
             .then(res => console.log(res))
             .catch(err => console.log(err))
+            
+        
         }
-        
-    }
-    else if(data.pull_request){
-        let obj={}
-        obj["url"]=data.pull_request.html_url
-        obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
-        obj["action"]=data.action
-        obj["number"]=data.number
-        obj["pull"]={url:data.pull_request.html_url , title:data.pull_request.title,user:{name:data.pull_request.user.login,url:data.pull_request.user.html_url}}
-
-        
-        
-        console.log(obj);
-        if(obj.action==="opened"|| obj.action==="closed"){
-            DB.insertHook('pull', obj)
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-        }
-        
-    
+        else if(data.pull_request){
+            let obj={}
+            obj["url"]=data.pull_request.html_url
+            obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
+            obj["action"]=data.action
+            obj["number"]=data.number
+            obj["pull"]={url:data.pull_request.html_url , title:data.pull_request.title,user:{name:data.pull_request.user.login,url:data.pull_request.user.html_url}}
+            console.log(obj);
+            if(obj.action==="opened"|| obj.action==="closed"){
+                DB.insertHook('pull', obj)
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+            }        
+        }    
 
     }    
     res.json("obj")
