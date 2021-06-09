@@ -25,11 +25,11 @@ app.post("/",async (req,res)=>{
     }
     else if(data.pull_request){
         let obj={}
-        obj["url"]=data.repository.html_url
+        obj["url"]=data.pull_request.html_url
         obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
         obj["action"]=data.action
         obj["number"]=data.number
-        obj["pull"]={url:data.pull_request.html_url , title:data.pull_request.title,user:data.pull_request.user}
+        obj["pull"]={url:data.pull_request.html_url , title:data.pull_request.title,user:{name:data.pull_request.user.login,url:data.pull_request.user.html_url}}
 
         obj["sender"]={name:data.sender.name,url:data.sender.html_url,type:data.sender.type}
       
