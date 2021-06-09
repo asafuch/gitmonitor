@@ -68,6 +68,7 @@ app.get('/name',(req,res)=>{
     res.send('hello')
 })
 app.post('/type/:type',(req,res)=>{
+    console.log('llllllll');
     DB.getRequests(req.params.type)   
     .then(data => res.json(data))
     .catch(err => res.send({message:err}))

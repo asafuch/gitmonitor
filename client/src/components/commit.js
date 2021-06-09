@@ -20,7 +20,9 @@ import React, { Component } from 'react'
         // catch(err) {
         //     console.log(err);
         // }
-        fetch('https://githubmonitors.herokuapp.com/type/commit')
+        fetch('https://githubmonitors.herokuapp.com/type/commit',{
+            method:'POST'
+        })
         .then(res => res.json())
         .then(data => console.log(data))
         .catch(err => console.log(err))
