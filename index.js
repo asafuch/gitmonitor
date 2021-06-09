@@ -68,9 +68,8 @@ app.get('/name',(req,res)=>{
     res.send('hello')
 })
 app.post('/commit',(req,res)=>{
-    console.log('llllllll');
     DB.getRequests('commit')   
-    .then(data => res.json(data))
+    .then(data => res.send(data))
     .catch(err => res.send({message:err}))
 })
 
