@@ -33,7 +33,11 @@ app.post("/",async (req,res)=>{
 
         obj["sender"]={name:data.sender.name,url:data.sender.html_url,type:data.sender.type}
         console.log(Object.keys(data.pull_request));
-        console.log(data.pull_request._links);
+        console.log(data.pull_request._links.html.href);
+        console.log(data.pull_request.html_url);
+        console.log(data.pull_request.user);
+        console.log(data.pull_request.base);
+
     }    
     res.json("obj")
     console.log("----------------------------------");
