@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
  class Commit extends Component {
      static defaultProps={
@@ -11,21 +12,24 @@ import React, { Component } from 'react'
             message: 'Update demo.txt'
          }
      }
-     componentDidMount(){
-        // try{
-        //     let response = await 
-        //     let data = await response.json();
-        //     console.log(data);
-        // }
-        // catch(err) {
-        //     console.log(err);
-        // }
-        fetch('https://githubmonitors.herokuapp.com/commit',{
-            method:'POST',
-        })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
+     
+     async componentDidMount(){
+        try{
+            let response = await axios.post('https://githubmonitors.herokuapp.com/type',{
+                type:'commit'
+            })
+            let data = await response.json();
+            console.log(data);
+        }
+        catch(err) {
+            console.log(err);
+        }
+        // fetch('https://githubmonitors.herokuapp.com/commit',{
+        //     method:'POST',
+        // })
+        // .then(res => res.json())
+        // .then(data => console.log(data))
+        // .catch(err => console.log(err))
 
         
     }

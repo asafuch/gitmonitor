@@ -64,13 +64,13 @@ app.post("/",async (req,res)=>{
     
 })
 
-app.get('/name',(req,res)=>{
-    res.send('hello')
+app.get('/type/:type',(req,res)=>{
+    DB.getRequests(req.params.type)   
+    .then(data => res.send(data))
+    .catch(err => res.send({message:err}))
 })
-app.post('/commit',(req,res)=>{
-    // res.send({message:'okxcbvcb'})
-
-    DB.getRequests('commit')   
+app.post('/type',(req,res)=>{
+    DB.getRequests(req.body.type)   
     .then(data => res.send(data))
     .catch(err => res.send({message:err}))
 })
