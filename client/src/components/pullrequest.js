@@ -14,10 +14,22 @@ import React, { Component } from 'react'
         sender: { name: undefined, url: 'https://github.com/asafuch', type: 'User' }
     }
     render() {
-        console.log(this.props);
+        const {url,time,action,number,pull,sender}=this.props
         return (
             <div>
-                <h1>PULL</h1>
+                <div class="card text-center">
+                    <div style={action==="opened" ? {background:"#28a745"} : {background:"red"}} class="card-header">
+                        {action==="opened" ? "New Pull Request" : "Pull Request Closed"}
+                    </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Title: {pull.title}</h5>
+                            <p class="card-text">{action==="opened" ? `New pull request has been added by ${pull.user.url}, check it out`:"a Pull request has been closed,check out why"}</p>
+                            <a href={pull.url} target="_blank" class="btn btn-primary">Click here</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            2 days ago
+                        </div>
+                    </div>
             </div>
         )
     }
