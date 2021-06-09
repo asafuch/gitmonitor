@@ -68,6 +68,7 @@ app.get('/name',(req,res)=>{
     res.send('hello')
 })
 app.post('/commit',(req,res)=>{
+    res.send({message:'ok'}
     DB.getRequests('commit')   
     .then(data => res.send(data))
     .catch(err => res.send({message:err}))
