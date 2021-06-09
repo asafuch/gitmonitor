@@ -26,7 +26,7 @@ app.post("/",async (req,res)=>{
             console.log(obj);
             
             DB.insertHook('commit', obj)
-            .then(res => console.log(res))
+            .then(data => console.log(data))
             .catch(err => console.log(err))
             
         
@@ -41,7 +41,7 @@ app.post("/",async (req,res)=>{
             console.log(obj);
             if(obj.action==="opened"|| obj.action==="closed"){
                 DB.insertHook('pull', obj)
-                .then(res => console.log(res))
+                .then(data => console.log(data))
                 .catch(err => console.log(err))
             }        
         }    
@@ -52,6 +52,12 @@ app.post("/",async (req,res)=>{
     console.log("log ends");
     
     
+})
+
+app.get('type/:type',(req,res)=>{
+    DB.getRequests(req.paramas.type)   
+    .then(data => res.send(data))
+    .catch(err => res.send({message:err}))
 })
 
 app.listen(process.env.PORT || 5000,async()=>{

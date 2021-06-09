@@ -17,6 +17,13 @@ const insertHook = (type,json) => {
     .returning('*')
 }
 
+const getRequests = (type) => {
+    return db('githubmonitor')
+    .select('data')
+    .where({type:type})
+}
+
 module.exports = {
     insertHook,
+    getRequests
 }
