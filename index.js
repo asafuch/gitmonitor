@@ -59,7 +59,7 @@ app.get('/name',(req,res)=>{
 })
 app.get('/type/:type',(req,res)=>{
     DB.getRequests(req.params.type)   
-    .then(data => res.send(data))
+    .then(data => res.json(data))
     .catch(err => res.send({message:err}))
 })
 
