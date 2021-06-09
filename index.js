@@ -58,7 +58,7 @@ app.get('/name',(req,res)=>{
     res.send('hello')
 })
 app.get('/type/:type',(req,res)=>{
-    DB.getRequests(req.paramas.type)   
+    DB.getRequests(req.params.type)   
     .then(data => res.send(data))
     .catch(err => res.send({message:err}))
 })
