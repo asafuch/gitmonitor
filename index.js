@@ -13,6 +13,8 @@ app.get('/', (req, res) =>{
 } )
 
 app.post("/",async (req,res)=>{
+    console.log(req.headers);
+    console.log(req.url);
     console.log("log start");
     console.log("----------------------------------");
     const data=JSON.parse(JSON.stringify(req.body))
