@@ -67,9 +67,9 @@ app.post("/",async (req,res)=>{
 app.get('/name',(req,res)=>{
     res.send('hello')
 })
-app.post('/type/:type',(req,res)=>{
+app.post('/commit',(req,res)=>{
     console.log('llllllll');
-    DB.getRequests(req.params.type)   
+    DB.getRequests('commit')   
     .then(data => res.json(data))
     .catch(err => res.send({message:err}))
 })
