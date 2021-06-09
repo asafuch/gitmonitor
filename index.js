@@ -24,9 +24,12 @@ app.post("/",async (req,res)=>{
         obj["pusher"]=data.pusher
         obj["commit"]={time:data.commits[0].timestamp , url:data.commits[0].url , message: data.commits[0].message}
         console.log(obj);
-        DB.insertHook('commit', obj)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+        if(obj.commit.url.length >0){
+            DB.insertHook('commit', obj)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+        }
+        
     }
     else if(data.pull_request){
         let obj={}
@@ -37,11 +40,14 @@ app.post("/",async (req,res)=>{
         obj["pull"]={url:data.pull_request.html_url , title:data.pull_request.title,user:{name:data.pull_request.user.login,url:data.pull_request.user.html_url}}
 
         
-      
+        
         console.log(obj);
-        DB.insertHook('pull', obj)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+        if(obj.action==="opened"|| obj.action==="closed"){
+            DB.insertHook('pull', obj)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+        }
+        
     
 
     }    
