@@ -2,8 +2,6 @@ const express=require("express")
 const DB = require('./modules/db.js')
 const cors = require('cors')
 const app=express()
-
-
 app.use(cors())
 app.use(express.json());
 
@@ -26,13 +24,10 @@ app.post("/",async (req,res)=>{
             obj["time"]={updated:data.repository.updated_at , pushed:data.repository.pushed_at}
             obj["pusher"]=data.pusher
             obj["commit"]={time:data.commits[0].timestamp , url:data.commits[0].url , message: data.commits[0].message}
-           
             //inserting the data into postgres
             DB.insertHook('commit', obj)
             .then(data => console.log(data))
             .catch(err => console.log(err))
-            
-        
         }
          //if it was a pull request that triggered the webhook
         else if(data.pull_request){
@@ -49,13 +44,7 @@ app.post("/",async (req,res)=>{
                 .catch(err => console.log(err))
             }        
         }    
-
-    
     res.json("obj")
-    console.log("----------------------------------");
-    console.log("log ends");
-    
-    
 })
 
 app.get('/type/:type',(req,res)=>{
@@ -63,7 +52,7 @@ app.get('/type/:type',(req,res)=>{
     .then(data => res.send(data))
     .catch(err => res.send({message:err}))
 })
-//couldn't make a get request on my heruko server, so i sent it a post request and used the response i get from the server for my data
+//couldn't send a get request to my heruko server, so i sent it a post request and used the response i get from the server as my data
 app.post('/type',(req,res)=>{
     DB.getRequests(req.body.type)   
     .then(data => res.send(data))
