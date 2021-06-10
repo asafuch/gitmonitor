@@ -7,7 +7,9 @@ const app=express()
 app.use(cors())
 app.use(express.json());
 
-
+////////////////////////////////////////////////////
+//DO NOT RUN THE EXPRESS APP, RUN ONLY THE REACT APP
+////////////////////////////////////////////////////
 
 app.get('/', (req, res) =>{
     res.send('READ THE READMEFILE') 
