@@ -10,13 +10,14 @@ import * as actions from "../actionReducers/actions"
   
 
     async componentDidMount(){
+        //read comments on actions
        await this.props.getRequests("commit")
     }
 
     render() {
         console.log(this.props);
         const {data}=this.props
-        
+         //data retrieved from the server is mapped into cards
         const commits =  data.map((item,i) => {
             const {commit,pusher} = item.data;
             return (

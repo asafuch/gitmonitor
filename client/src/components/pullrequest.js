@@ -7,15 +7,16 @@ import * as actions from "../actionReducers/actions"
         super();
         
     }
-
+    
     componentDidMount(){
+        //read comments on actions
         this.props.getRequests("pull")
     }
   
     render() {
        
         const {data}=this.props
-        console.log(data);
+        //data retrieved from the server is mapped into cards
         const pulls =  data.map((item,i) => {
             const {time,action,pull}=item.data
             return (

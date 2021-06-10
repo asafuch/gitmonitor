@@ -1,3 +1,4 @@
+//connecting to heruko postgres client
 const db = require('knex')({
     client: 'pg',
     version: '7.2',
