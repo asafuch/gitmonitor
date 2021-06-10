@@ -1,6 +1,6 @@
 # gitmonitor
 
-1.Do not run the express app. there's no need for that, you should only run the react app and change the file in the monitored repository (you can do it through github itself)
+1.Do not run the express app. there's no need for that it is already being run on heruko, you should only run the react app and change the file in the monitored repository (you can do it through github itself)
 
 2.the monitored repository has a webhook, you have to change it while connected to github, the webhook sends a post request to the heruko server which then arrange the data and inserting it to the database
 
