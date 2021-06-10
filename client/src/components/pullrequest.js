@@ -1,24 +1,26 @@
 import React, { Component } from 'react'
-
+import axios from 'axios'
+import {connect} from 'react-redux'
+import * as actions from "../actionReducers/actions"
  class PullRequest extends Component {
-    static defaultProps={
-        url: 'https://github.com/asafuch/demo/pull/12',
-        time: { updated: '2021-06-08T18:41:13Z', pushed: '2021-06-09T12:45:46Z' },
-        action: 'opened',
-        number: 12,
-        pull: {
-            url: 'https://github.com/asafuch/demo/pull/12',
-            title: 'Asafuch patch 1',
-            user: { name: 'asafuch', url: 'https://github.com/asafuch' }
-        },
-        sender: { name: undefined, url: 'https://github.com/asafuch', type: 'User' }
+    constructor(){
+        super();
+        
     }
+
+    componentDidMount(){
+        this.props.getRequests("pull")
+    }
+  
     render() {
-        const {url,time,action,number,pull,sender}=this.props
- 
-        return (
-            <div>
-                <div class="card text-center">
+       
+        const {data}=this.props
+        console.log(data);
+        const pulls =  data.map((item,i) => {
+            const {time,action,pull}=item.data
+            return (
+                
+                <div class="card text-center m-3">
                     <div style={action==="opened" ? {background:"#28a745"} :action==="closed" && {background:"red"}} class="card-header">
                         {action==="opened" ? "New Pull Request" : action==="closed" && "Pull Request Closed"}
                     </div>
@@ -31,8 +33,30 @@ import React, { Component } from 'react'
                            {`updated at: ${time.updated}, pushed at: ${time.pushed}`}
                         </div>
                     </div>
+          
+            )
+        })
+ 
+        return (
+            <div>
+                {pulls}
             </div>
         )
     }
 }
-export default PullRequest
+
+const mapStateToProps=(state)=>{
+    return{
+        data:state.pull,
+        
+    }
+}
+
+const mapDispatchToProps=(dispatch)=>{
+    return {
+        getRequests:(type)=>dispatch(actions.getRequests(type))
+    }
+
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(PullRequest)

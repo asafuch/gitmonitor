@@ -24,6 +24,7 @@ app.use(express.json());
 
 app.post("/",async (req,res)=>{
     console.log(req.headers);
+    console.log("hello");
     if(req.headers['user-agent']==='GitHub-Hookshot/f923b7b'){
         const data=JSON.parse(JSON.stringify(req.body))
 

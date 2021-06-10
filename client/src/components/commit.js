@@ -1,46 +1,32 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-
+import {connect} from 'react-redux'
+import * as actions from "../actionReducers/actions"
  class Commit extends Component {
-     static defaultProps={
-         url:'https://github.com/asafuch/demo',
-         time:{updated: '2021-06-08T18:41:13Z', pushed: "1623240314"},
-         pusher:{name:"asafuch",email: '85555819+asafuch@users.noreply.github.com'},
-         commit:{
-            time: '2021-06-09T15:05:14+03:00',
-            url: 'https://github.com/asafuch/demo/commit/96aa7c96f8ea231fae17c827b35874cef7e4e08e',
-            message: 'Update demo.txt'
-         }
-     }
-     
-     async componentDidMount(){
-        try{
-            let response = await axios.post('https://githubmonitors.herokuapp.com/type',{
-                type:'commit'
-            })
-            let data = await response.json();
-            console.log(data);
-        }
-        catch(err) {
-            console.log(err);
-        }
-        // fetch('https://githubmonitors.herokuapp.com/commit',{
-        //     method:'POST',
-        // })
-        // .then(res => res.json())
-        // .then(data => console.log(data))
-        // .catch(err => console.log(err))
-
+     constructor(){
+         super();
         
+     }
+  
+
+    async componentDidMount(){
+       await this.props.getRequests("commit")
     }
+
     render() {
-        const {url,time,pusher,commit}=this.props
-        return (
-            <div>
-            <div class="card text-center">
-                <div style= {{background:"#28a745"}} class="card-header">
-                   New Commit
-                </div>
+        console.log(this.props);
+        const {data}=this.props
+        
+        const commits =  data.map((item,i) => {
+            const {commit,pusher} = item.data;
+            return (
+               
+              
+                <div class="card text-center m-3">
+                    
+                    <div style= {{background:"#28a745"}} class="card-header">
+                    New Commit
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Message: {commit.message}</h5>
                         <p class="card-text">{`a New Commit has been made by ${pusher.name} at ${commit.time}`}</p>
@@ -50,9 +36,28 @@ import axios from 'axios';
                         {`at: ${commit.time}`}
                     </div>
                 </div>
-        </div>
+               
+            )
+        })
+        return (
+            <div>
+            {commits}
+            </div>
         )
     }
 }
+const mapStateToProps=(state)=>{
+    return{
+        data:state.commit,
+        
+    }
+}
 
-export default Commit
+const mapDispatchToProps=(dispatch)=>{
+    return {
+        getRequests:(type)=>dispatch(actions.getRequests(type))
+    }
+
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Commit)
