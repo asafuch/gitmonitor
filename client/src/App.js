@@ -4,8 +4,9 @@ import PullRequest from "./components/pullrequest"
 import {connect} from "react-redux"
 import * as actions from "./actionReducers/actions"
 class App extends Component {
-
+    //the refresh button will refresh both redux arrays when clicked,
     handleRefresh=async()=>{
+        //read actions comments to understand the function
         this.props.getRequests("commit")
         this.props.getRequests("pull")
     }
@@ -15,6 +16,7 @@ class App extends Component {
             <div className="container text-center">
                 <h1>GitHub Monitor</h1>
                 <div>
+                    
                     <button onClick={this.handleRefresh} className="btn btn-primary">
                         Refresh
                     </button>
