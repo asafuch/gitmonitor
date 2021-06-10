@@ -5,7 +5,6 @@ import * as actions from "../actionReducers/actions"
  class PullRequest extends Component {
     constructor(){
         super();
-        
     }
     
     componentDidMount(){
